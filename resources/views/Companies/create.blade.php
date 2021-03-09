@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+<!-- Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+<!-- Styles -->
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+    <form lang="nl" class="form-horizontal" role="form" method="POST" action="{{ route('companies.store') }}">
+        <div class="form-group">
+            <label>Naam</label>
+            <input type="text" class="form-control" name="name"/>
+        </div>
+        <div class="form-group">
+            <label>E-mail</label>
+            <input type="text" class="form-control" name="email"/>
+        </div>
+        <div class="form-group">
+            <label>adres</label>
+            <input type="text" class="form-control" name="address"/>
+        </div>
+        <div class="form-group">
+            <label>Website</label>
+            <input type="text" class="form-control" name="website"/>
+        </div>
+        <div>
+            <div class="form-group">
+                <input type="hidden" class="form-control" name="website"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Toevoegen</button>
+    </form>
