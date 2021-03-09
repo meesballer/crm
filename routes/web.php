@@ -30,7 +30,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('companies', 'CompanyController');
+Route::post('/companies/create', 'CompanyController@store');
+Route::post('/companies/update', 'CompanyController@update');
 
 Route::resource('employees', 'EmployeeController');
 
 Route::resource('roles', 'RoleController');
+Route::post('/roles/create', 'RoleController@store');

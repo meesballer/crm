@@ -3,7 +3,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -31,6 +30,9 @@
     @endif
 
     <form action="" method="post" action="{{ route('companies.store') }}">
+        <div class="pull-right">
+            <h1>Werknemer toevoegen</h1>
+        </div>
 
         <!-- CROSS Site Request Forgery Protection -->
         @csrf
@@ -55,8 +57,8 @@
             <input type="text" class="form-control" name="website" id="website">
         </div>
 
-        <div class="form-group">
-            <input type="hidden" class="form-control" name="user_id" id="user_id" rows="4">
+        <div class="col-md-9">
+                <input id="user_id" type="hidden" class="form-control" name="user_id" value={{$user_id}}>
         </div>
 
         <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
