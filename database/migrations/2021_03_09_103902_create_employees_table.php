@@ -18,8 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
-            $table->string('address');
-            $table->string('website');
+            $table->string('phone');
             $table->unsignedInteger('company_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('role_id');
