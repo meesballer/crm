@@ -32,6 +32,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('companies', 'CompanyController');
 Route::post('/companies/create', 'CompanyController@store');
 Route::post('/companies/update', 'CompanyController@update');
+Route::post('/companies/{company}/destroy', 'CompanyController@destroy');
+
 
 Route::resource('employees', 'EmployeeController');
 

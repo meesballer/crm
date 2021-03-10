@@ -19,7 +19,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $company = Company::all();
+        return view('companies.index', compact('company'));
     }
 
     /**
@@ -70,7 +71,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::find($id);
+        return view('companies.show', compact('company'));
     }
 
     /**
@@ -109,7 +111,8 @@ class CompanyController extends Controller
         $company->user_id = $request->user_id;
 
         $company->save();
-        return redirect('/companies');
+        //
+        return back()->with('success', 'Bedrijf bewerkt.');
 
     }
 
@@ -121,6 +124,8 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::find($id);
+        $company->delete();
+        return redirect('companies')->with('success', 'Bedrijf verwijderd.');;
     }
 }

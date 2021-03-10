@@ -31,7 +31,7 @@
 
     <form action="" method="post" action="{{ route('companies.store') }}">
         <div class="pull-right">
-            <h1>Werknemer toevoegen</h1>
+            <h1>Bedrijf toevoegen</h1>
         </div>
 
         <!-- CROSS Site Request Forgery Protection -->

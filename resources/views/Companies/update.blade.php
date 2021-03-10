@@ -29,9 +29,10 @@
         </div>
     @endif
 
-    <form method="patch" action="{{ route('companies.update', $company->id) }}">
+    <form method="post" action="{{ route('companies.update', $company->id) }}">
         <div class="pull-right">
-            <h1>Werknemer bewerken</h1>
+            @method('PATCH')
+            <h1>Bedrijf bewerken</h1>
         </div>
 
         <!-- CROSS Site Request Forgery Protection -->
