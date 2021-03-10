@@ -56,5 +56,19 @@
             </tr>
         </tbody>
     </table>
+        <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Naam</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            @foreach($employees as $employee)
+            <td>{{$employee->name}}</td>
+        </tr>
+        </tbody>
+        </table>
 </div>
 </html>
