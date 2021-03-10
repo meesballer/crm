@@ -87,14 +87,7 @@ class EmployeeController extends Controller
         $user = Auth::user();
         $employee = Employee::find($id);
         $companies = Company::all();
-
-        $data = [
-            'userid' => $user->id,
-            'employee' => $employee,
-            'companies' => $companies,
-        ];
-
-        return view('employees.update')->with($data);
+        return view('employees.update', compact('user', 'employee', 'companies'));
     }
 
     /**

@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label>Voornaam</label>
-            <input type="text" class="form-control" name=firstname" id="firstname" value="{{$employee->firstname}}">
+            <input type="text" class="form-control" name="firstname" id="firstname" value="{{$employee->firstname}}">
         </div>
 
         <div class="form-group">
@@ -67,9 +67,9 @@
         </select>
 
         <div class="col-md-9">
-            <input id="user_id" type="hidden" class="form-control" name="user_id" value={{$userid}}>
+            <input id="user_id" type="hidden" class="form-control" name="user_id" value={{$user->id}}>
         </div>
-
+        <br>
         <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
     </form>
 </div>

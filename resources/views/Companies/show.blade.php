@@ -67,6 +67,7 @@
         <tr>
             @foreach($employees as $employee)
             <td>{{$employee->name}}</td>
+            @endforeach
         </tr>
         </tbody>
         </table>

@@ -16,16 +16,16 @@
     }
 </style>
 
-<div class="pull-right">
-    <a href="{{ route('employees.create') }}" class="btn-common btn-add">Medewerker toevoegen</a>
-</div>
+
 <div class="push-top">
     @if(session()->get('success'))
         <div class="alert alert-success">
             {{ session()->get('success') }}
         </div><br/>
     @endif
-
+        <div class="pull-right">
+            <a href="{{ route('employees.create') }}" class="btn btn-primary">Medewerker toevoegen</a>
+        </div>
     <table class="table">
         <thead class="thead-dark">
         <tr>

@@ -20,8 +20,11 @@ class CreateEmployeesTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->unsignedInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('company');
             $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
