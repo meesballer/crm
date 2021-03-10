@@ -51,19 +51,26 @@
         </div>
 
         <div class="form-group">
-            <label>Phone</label>
+            <label>Telefoonnummer</label>
             <input type="text" class="form-control" name="phone" id="phone">
         </div>
 
-        <div class="form-group">
-            <label>Subject</label>
-            <input type="text" class="form-control" name="subject" id="subject">
-        </div>
+        <label>Bedrijf</label>
+        <select name="company_id" id="company_id" class="form-control">
+            <option value="{{ -1 }}">{{ 'Kies een Bedrijf' }}</option>
+            @foreach($companies as $company)
+                <option value="{{$company->id}}">{{$company->name}}</option>
+            @endforeach
+        </select>
 
         <div class="form-group">
-            <label>Message</label>
-            <textarea class="form-control" name="message" id="message" rows="4"></textarea>
+            <input type="hidden" class="form-control" name="role_id" id="role_id" value="2">
         </div>
+
+        <div class="col-md-9">
+            <input id="user_id" type="hidden" class="form-control" name="user_id" value={{$userid}}>
+        </div>
+        <br>
 
         <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
     </form>

@@ -36,8 +36,13 @@
                         <li class="@if(isset($activeMenuItem) && $activeMenuItem == "companies")active @endif"><a
                                 href="{{ route('companies.index') }}">Bedrijven</a></li>
                     </li>
-
                     </ul>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="@if(isset($activeMenuItem) && $activeMenuItem == "employees")active @endif"><a
+                                    href="{{ route('employees.index') }}">Medewerkers</a></li>
+                            </li>
+                        </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

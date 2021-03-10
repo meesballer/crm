@@ -13,6 +13,11 @@ class Employee extends Model
         'phone',
         'company_id',
         'user_id',
-        'role_id',
+        'role_id'
     ];
+
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
 }

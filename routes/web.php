@@ -36,6 +36,9 @@ Route::post('/companies/{company}/destroy', 'CompanyController@destroy');
 
 
 Route::resource('employees', 'EmployeeController');
+Route::post('/employees/create', 'EmployeeController@store');
+Route::post('/employees/update', 'EmployeeController@update');
+Route::post('/employees/{employee}/destroy', 'EmployeeController@destroy');
 
 Route::resource('roles', 'RoleController');
 Route::post('/roles/create', 'RoleController@store');
