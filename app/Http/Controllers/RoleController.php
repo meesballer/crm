@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Role;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -25,7 +26,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $users = Auth::user();
+        return view('roles.create', ['users' => $users]);
     }
 
     /**
@@ -36,7 +38,16 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        // Form validation
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        //  Store data in database
+        Role::create($request->all());
+
         //
+        return back()->with('success', 'Rol toegevoegd.');
     }
 
     /**

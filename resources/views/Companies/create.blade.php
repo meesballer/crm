@@ -1,41 +1,73 @@
+@include('layouts.app')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!-- Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-<!-- Styles -->
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-    <form lang="nl" class="form-horizontal" role="form" method="POST" action="{{ route('companies.store') }}">
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+</head>
+
+<body>
+<div class="container mt-5">
+
+    <!-- Success message -->
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{Session::get('success')}}
+        </div>
+    @endif
+
+    <form action="" method="post" action="{{ route('companies.store') }}">
+        <div class="pull-right">
+            <h1>Bedrijf toevoegen</h1>
+        </div>
+
+        <!-- CROSS Site Request Forgery Protection -->
+        @csrf
+
         <div class="form-group">
             <label>Naam</label>
-            <input type="text" class="form-control" name="name"/>
+            <input type="text" class="form-control" name="name" id="name">
         </div>
+
         <div class="form-group">
-            <label>E-mail</label>
-            <input type="text" class="form-control" name="email"/>
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" id="email">
         </div>
+
         <div class="form-group">
             <label>adres</label>
-            <input type="text" class="form-control" name="address"/>
+            <input type="text" class="form-control" name="address" id="address">
         </div>
+
         <div class="form-group">
             <label>Website</label>
-            <input type="text" class="form-control" name="website"/>
+            <input type="text" class="form-control" name="website" id="website">
         </div>
-        <div>
-            <div class="form-group">
-                <input type="hidden" class="form-control" name="website"/>
-            </div>
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="role_id" id="role_id" value="2">
         </div>
-        <button type="submit" class="btn btn-primary">Toevoegen</button>
+
+        <div class="col-md-9">
+                <input id="user_id" type="hidden" class="form-control" name="user_id" value={{$user_id}}>
+        </div>
+
+        <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
     </form>
+</div>
+</body>
+
+</html>
