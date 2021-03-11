@@ -55,21 +55,35 @@
                 </td>
             </tr>
         </tbody>
-    </table>
         <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Naam</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        <tr>
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Voornaam</th>
+                <th scope="col">Achternaam</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefoon</th>
+                <th class="text-center">Actie</th>
+            </tr>
+            </thead>
+            <tbody>
             @foreach($employees as $employee)
-            <td>{{$employee->firstname}}</td>
+                <tr>
+                    <td>{{$employee->firstname}}</td>
+                    <td>{{$employee->lastname}}</td>
+                    <td>{{$employee->email}}</td>
+                    <td>{{$employee->phone}}</td>
+                    <td class="text-center">
+                        <a href="{{ route('employees.edit', $employee->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{{ route('employees.show', $employee->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                        <form action="{{ route('employees.destroy', $employee->id)}}" method="post" style="display: inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
             @endforeach
-        </tr>
-        </tbody>
+            </tbody>
         </table>
 </div>
 </html>
