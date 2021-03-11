@@ -17,7 +17,7 @@
     </style>
 
         <div class="pull-right">
-            <a href="{{ route('companies.create') }}" class="btn-common btn-add">Bedrijf toevoegen</a>
+            <a href="{{ route('companies.create') }}" class="btn btn-primary">Bedrijf toevoegen</a>
         </div>
     <div class="push-top">
         @if(session()->get('success'))

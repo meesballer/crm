@@ -32,7 +32,6 @@
             <th scope="col">Voornaam</th>
             <th scope="col">Achternaam</th>
             <th scope="col">Email</th>
-            <th scope="col">Adres</th>
             <th scope="col">Telefoon</th>
             <th scope="col">Bedrijf</th>
             <th class="text-center">Actie</th>
@@ -44,7 +43,6 @@
                 <td>{{$employees->firstname}}</td>
                 <td>{{$employees->lastname}}</td>
                 <td>{{$employees->email}}</td>
-                <td>{{$employees->address}}</td>
                 <td>{{$employees->phone}}</td>
                 <td>{{$employees->company->name}}</td>
                 <td class="text-center">

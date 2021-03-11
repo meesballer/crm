@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::all();
+        $employee = Employee::paginate(10);
         return view('employees.index', compact('employee'));
     }
 

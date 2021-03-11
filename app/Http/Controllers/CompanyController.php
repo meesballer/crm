@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +25,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $company = Company::all();
+        $company = Company::paginate(10);
         return view('companies.index', compact('company'));
     }
 
