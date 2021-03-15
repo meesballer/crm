@@ -14,11 +14,13 @@
         margin-bottom: 20px;
         white-space: nowrap;
     }
+    .pull-right{
+        margin-left:75%;
+    }
 </style>
 <div class="row">
-
         <span class="pull-right">
-            <a href="{{ route('companies.create') }}" class="btn btn-default btn-common btn-add">bericht toevoegen</a>
+            <a href="{{ route('employees.create', $company->id) }}" class="btn btn-primary btn-sm">Medewerker toevoegen</a>
         </span>
 </div>
 <div class="push-top">

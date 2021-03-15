@@ -77,13 +77,10 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-//        $company = Company::with('employees')->find($id)->get();
-//        dd($company->employees);
 
-//        return view('companies.show', compact('company'));
         $employees = Employee::where('company_id', '=', $id )->get();
         $company = Company::find($id);
-        return view('companies.show', compact('company', 'employees'));
+        return view('companies.show', compact('company', 'employees', 'id'));
     }
 
     /**
@@ -123,7 +120,7 @@ class CompanyController extends Controller
 
         $company->save();
         //
-        return back()->with('success', 'Bedrijf bewerkt.');
+        return redirect()->route('companies.show', [$company])->with('success', 'Bedrijf bewerkt.');
 
     }
 

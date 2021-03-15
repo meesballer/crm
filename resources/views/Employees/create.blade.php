@@ -34,7 +34,7 @@
 
         <!-- CROSS Site Request Forgery Protection -->
         @csrf
-
+        <h1>Medewerker toevoegen</h1>
         <div class="form-group">
             <label>Voornaam</label>
             <input type="text" class="form-control" name="firstname" id="firstname">
@@ -57,10 +57,17 @@
 
         <label>Bedrijf</label>
         <select name="company_id" id="company_id" class="form-control">
-            <option value="{{ -1 }}">{{ 'Kies een Bedrijf' }}</option>
+            @if($companyid < 0)
+            <option value="{{ -1 }}">Selecteer een bedrijf.</option>
             @foreach($companies as $company)
                 <option value="{{$company->id}}">{{$company->name}}</option>
             @endforeach
+            @else
+                <option value="{{$companyid}}"></option>
+                @foreach($companies as $company)
+                    <option value="{{$company->id}}">{{$company->name}}</option>
+                @endforeach
+            @endif
         </select>
 
         <div class="form-group">

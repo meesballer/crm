@@ -30,15 +30,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="@if(isset($activeMenuItem) && $activeMenuItem == "companies")active @endif"><a
+                        <li class="@if(isset($activeMenuItem) && $activeMenuItem == "companies")active @endif"><a class="navbar-brand"
                                 href="{{ route('companies.index') }}">Bedrijven</a></li>
                     </li>
                     </ul>
                         <ul class="navbar-nav mr-auto">
-                            <li class="@if(isset($activeMenuItem) && $activeMenuItem == "employees")active @endif"><a
+                            <li class="@if(isset($activeMenuItem) && $activeMenuItem == "employees")active @endif"><a class="navbar-brand"
                                     href="{{ route('employees.index') }}">Medewerkers</a></li>
                             </li>
                         </ul>

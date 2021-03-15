@@ -15,12 +15,6 @@
         white-space: nowrap;
     }
 </style>
-<div class="row">
-
-        <span class="pull-right">
-            <a href="{{ route('employees.create') }}" class="btn btn-default btn-common btn-add">Medewerker toevoegen</a>
-        </span>
-</div>
 <div class="push-top">
     @if(session()->get('success'))
         <div class="alert alert-success">

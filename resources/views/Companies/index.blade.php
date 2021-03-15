@@ -14,17 +14,28 @@
         margin-bottom: 20px;
         white-space: nowrap;
         }
+        .pull-right{
+            margin-left:75%;
+        }
+        .heading{
+            position: absolute;
+            left: 160px;
+            top: 100px;
+        }
     </style>
-
-        <div class="pull-right">
-            <a href="{{ route('companies.create') }}" class="btn btn-primary">Bedrijf toevoegen</a>
-        </div>
     <div class="push-top">
         @if(session()->get('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
             </div><br/>
         @endif
+        <div class="heading">
+            <H1><BR>Bedrijven</H1>
+        </div>
+        <div class="pull-right">
+            <a href="{{ route('companies.create') }}" class="btn btn-primary btn-sm">Bedrijf toevoegen</a>
+        </div>
+        <br>
 
             <table class="table">
             <thead class="thead-dark">

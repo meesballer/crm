@@ -30,11 +30,13 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $companyid = $request->all();
         $user = Auth::user();
         $companies = Company::all();
         $data = [
+            'companyid' => $companyid,
             'userid' => $user->id,
             'companies' => $companies,
         ];
@@ -112,7 +114,7 @@ class EmployeeController extends Controller
 
         $employee->save();
         //
-        return back()->with('success', 'Medewerker bewerkt.');
+        return redirect()->route('employees.show', [$employee])->with('success', 'Medewerker bewerkt.');
     }
 
     /**
