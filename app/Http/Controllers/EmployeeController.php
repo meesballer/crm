@@ -30,13 +30,11 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $companyid = $request->all();
         $user = Auth::user();
         $companies = Company::all();
         $data = [
-            'companyid' => $companyid,
             'userid' => $user->id,
             'companies' => $companies,
         ];
@@ -69,6 +67,8 @@ class EmployeeController extends Controller
         //
         return back()->with('success', 'Medewerker toegevoegd.');
     }
+
+
 
     /**
      * Display the specified resource.

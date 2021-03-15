@@ -29,6 +29,19 @@ class CompanyController extends Controller
         return view('companies.index', compact('company'));
     }
 
+    public function add($id)
+    {
+        $user = Auth::user();
+        $company = Company::find($id);
+        $data = [
+            'userid' => $user->id,
+            'company' => $company,
+        ];
+
+        return view('companies.add')->with($data);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

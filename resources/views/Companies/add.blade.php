@@ -1,5 +1,5 @@
 @include('layouts.app')
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -57,10 +57,7 @@
 
         <label>Bedrijf</label>
         <select name="company_id" id="company_id" class="form-control">
-            <option value="{{ -1 }}">Selecteer een bedrijf.</option>
-            @foreach($companies as $company)
-                <option value="{{$company->id}}">{{$company->name}}</option>
-            @endforeach
+            <option value="{{$company->id}}">{{$company->name}}</option>
         </select>
 
         <div class="form-group">
