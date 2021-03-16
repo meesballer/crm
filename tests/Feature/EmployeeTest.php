@@ -13,15 +13,10 @@ class EmployeeTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function only_logged_in_users_can_see_employees_list()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+      $response = $this->get('/employees')
+          ->assertRedirect('/login');
     }
 
-    public function test_inputs()
-    {
-        $firstname();
-    }
 }
