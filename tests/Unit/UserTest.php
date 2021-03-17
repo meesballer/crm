@@ -21,4 +21,13 @@ class UserTest extends TestCase
 //            ->assertSee('Link Text')
 //            ->assertSee('Image');
 //    }
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testBasicTest()
+    {
+        $this->assertTrue(true);
+    }
 }

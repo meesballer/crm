@@ -2,10 +2,12 @@
 
 namespace Tests\Feature;
 
+use App\Company;
 use App\Employee;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class CompanyTest extends TestCase
@@ -26,17 +28,61 @@ class CompanyTest extends TestCase
             ->assertOk();
     }
 
-
     /** @test */
-    public function company_can_be_added_through_form()
+    public function authenthicated_users_can_see_create_form()
     {
         $this->actingAs(factory(User::class)->create());
 
+        $response = $this->get('/companies/create')
+            ->assertOk();
+    }
+
+    /** @test */
+    public function authenthicated_users_can_see_update_form()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $response = $this->get('/companies/1/update')
+            ->assertOk();
+    }
+
+    /** @test */
+    public function authenthicated_users_can_see_show()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $response = $this->get('/companies/1/show')
+            ->assertOk();
+    }
+
+
+    /** @test */
+    public function company_can_be_added_through_create_form()
+    {
+
+        Event::fake();
+
+        $this->actingAs(factory(User::class)->create());
         $response = $this->post('/companies', $this->data());
 
-        $this->assertCount(1, Employee::all());
+        $this->assertCount(1, Company::all());
 
     }
+
+    /** @test */
+    public function company_can_be_updated_through_update_form()
+    {
+
+        Event::fake();
+
+        $this->actingAs(factory(User::class)->create());
+        $response = $this->post('/companies/1/edit', $this->data());
+
+        $this->assertCount(1, Company::all());
+
+    }
+
+
 
     private function data()
     {
@@ -49,9 +95,9 @@ class CompanyTest extends TestCase
         ];
     }
 
-    /** @test */
-    public function a_name_is_required()
-    {
-
-    }
+//    /** @test */
+//    public function a_name_is_required()
+//    {
+//
+//    }
 }
