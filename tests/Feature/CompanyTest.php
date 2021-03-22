@@ -9,16 +9,19 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class CompanyTest extends TestCase
 {
     use RefreshDatabase;
+
     /** @test */
     public function only_logged_in_users_can_see_company_list()
     {
         $response = $this->get('/companies')
             ->assertRedirect('/login');
     }
+
     /** @test */
     public function authenthicated_users_can_see_company_list()
     {
@@ -40,18 +43,20 @@ class CompanyTest extends TestCase
     /** @test */
     public function authenthicated_users_can_see_update_form()
     {
+        $this->actingAs(factory(Company::class)->create());
         $this->actingAs(factory(User::class)->create());
 
-        $response = $this->get('/companies/1/update')
+        $response = $this->get('/companies/1/edit')
             ->assertOk();
     }
 
     /** @test */
     public function authenthicated_users_can_see_show()
     {
+        $this->actingAs(factory(Company::class)->create());
         $this->actingAs(factory(User::class)->create());
 
-        $response = $this->get('/companies/1/show')
+        $response = $this->get('/companies/1')
             ->assertOk();
     }
 
@@ -95,9 +100,4 @@ class CompanyTest extends TestCase
         ];
     }
 
-//    /** @test */
-//    public function a_name_is_required()
-//    {
-//
-//    }
 }

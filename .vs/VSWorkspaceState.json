@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Providers",
+    "\\database",
+    "\\database\\migrations",
+    "\\storage",
+    "\\storage\\app",
+    "\\storage\\app\\public",
+    "\\storage\\framework",
+    "\\storage\\logs"
+  ],
+  "SelectedNode": "\\app\\Company.php",
+  "PreviewInSolutionExplorer": false
+}

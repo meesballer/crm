@@ -9,6 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeTest extends TestCase
 {
@@ -16,21 +17,30 @@ class EmployeeTest extends TestCase
     /** @test */
     public function only_logged_in_users_can_see_employees_list()
     {
+        $this->actingAs(factory(Employee::class)->create());
       $response = $this->get('/employees')
           ->assertRedirect('/login');
     }
-    /** @test */
-    public function authenthicated_users_can_see_employees_list()
-    {
-        $this->actingAs(factory(User::class)->create());
 
-        $response = $this->get('/employees')
-        ->assertOk();
+    /** @test */
+    public function only_logged_in_users_can_see_employees_show()
+    {
+        $this->actingAs(factory(Employee::class)->create());
+        $response = $this->get('/employees/1/show')
+            ->assertRedirect('/login');
+    }
+    /** @test */
+    public function only_logged_in_users_can_see_employees_edit()
+    {
+        $this->actingAs(factory(Employee::class)->create());
+        $response = $this->get('/employees/1/edit')
+            ->assertRedirect('/login');
     }
 
     /** @test */
-    public function authenthicated_users_can_see_company_list()
+    public function authenthicated_users_can_see_employee_list()
     {
+        $this->actingAs(factory(Employee::class)->create());
         $this->actingAs(factory(User::class)->create());
 
         $response = $this->get('/employees')
@@ -50,6 +60,7 @@ class EmployeeTest extends TestCase
     public function authenthicated_users_can_see_update_form()
     {
         $this->actingAs(factory(User::class)->create());
+        $this->actingAs(factory(Employee::class)->create());
 
         $response = $this->get('/employees/1/update')
             ->assertOk();
@@ -59,8 +70,9 @@ class EmployeeTest extends TestCase
     public function authenthicated_users_can_see_show()
     {
         $this->actingAs(factory(User::class)->create());
+        $this->actingAs(factory(Employee::class)->create());
 
-        $response = $this->get('/employees/1/show')
+        $response = $this->get('/employees/1')
             ->assertOk();
     }
 
