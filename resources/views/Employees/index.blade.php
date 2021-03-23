@@ -33,7 +33,7 @@
         <H1><BR>Medewerkers</H1>
     </div>
         <div class="pull-right">
-            <a href="{{ route('employees.create') }}" class="btn btn-primary btn-sm">Medewerker toevoegen</a>
+            <a dusk="add-button" href="{{ route('employees.create') }}" class="btn btn-primary btn-sm">Medewerker toevoegen</a>
         </div>
         <br>
 
