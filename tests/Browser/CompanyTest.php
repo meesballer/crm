@@ -2,7 +2,6 @@
 
 namespace Tests\Browser;
 
-use
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Chrome;
@@ -22,7 +21,7 @@ class CompanyTest extends DuskTestCase
             'email' => 'admin@admin.com',
         ]);
 
-        $this->browse(function ($browser) use ($faker) {
+        $this->browse(function ($browser) use ($user) {
           $browser->LoginAs(User::find(1))
               ->visit('/companies')
               ->pause(1000)
