@@ -30,7 +30,9 @@ class ShowCompanyTest extends DuskTestCase
             $browser->LoginAs(User::find(1))
                 ->visit('/companies')
                 ->pause(1000)
-                ->assertSee('Bedrijf toegevoegd.');
+                ->click('@show-button')
+                ->pause(1000)
+                ->assertSee('xaris);
         });
 
     }

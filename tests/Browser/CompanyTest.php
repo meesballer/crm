@@ -2,7 +2,7 @@
 
 namespace Tests\Browser;
 
-use
+
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Chrome;
