@@ -2,6 +2,7 @@
 
 namespace Tests\Browser;
 
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
@@ -15,7 +16,8 @@ class UpdateEmployeeTest extends DuskTestCase
     public function UpdateEmployee()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/companies/1/edit')
+            $browser->LoginAs(User::find(1))
+                ->visit('/companies/1/edit')
                 ->pause(1000)
                 ->type('name', 'facebook')
                 ->pause(1000)

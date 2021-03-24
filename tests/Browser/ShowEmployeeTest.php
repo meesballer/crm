@@ -29,9 +29,7 @@ class ShowEmployeeTest extends DuskTestCase
 
         $this->browse(function ($browser) use ($user) {
             $browser->LoginAs(User::find(1))
-                ->visit('/employees')
-                ->pause(1000)
-                ->press('Detail')
+                ->visit('/employee/1')
                 ->pause(1000)
                 ->assertSee('Neistat');
         });
