@@ -8,12 +8,13 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Chrome;
 use Tests\DuskTestCase;
 
-class EmployeeTest extends DuskTestCase
+class EmployeeCreateTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
     /**
-    @test
+     * @test
+     * @group employee
      */
     public function VisitIndex()
     {

@@ -13,8 +13,10 @@ class LoginTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-    @test
+     * @test
+     * @group authentication
      */
+
     public function Login()
     {
         $user = factory(User::class)->create([

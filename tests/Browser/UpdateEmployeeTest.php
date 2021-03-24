@@ -9,15 +9,24 @@ use Tests\DuskTestCase;
 class UpdateEmployeeTest extends DuskTestCase
 {
     /**
-     * A Dusk test example.
-     *
-     * @return void
+     * @test
+     * @group employee
      */
-    public function testExample()
+    public function UpdateEmployee()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('CRM');
+            $browser->visit('/companies/1/edit')
+                ->pause(1000)
+                ->type('name', 'facebook')
+                ->pause(1000)
+                ->type('email', 'facebook@facebook.com')
+                ->pause(1000)
+                ->type('address', 'San Francisco')
+                ->pause(1000)
+                ->type('website', 'facebook.com')
+                ->pause(1000)
+                ->press('Submit')
+                ->assertSee('Bedrijf bijgewerkt.');
         });
     }
 }

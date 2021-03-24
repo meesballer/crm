@@ -55,8 +55,8 @@
                     <td>{{$companies->address}}</td>
                     <td>{{$companies->website}}</td>
                     <td class="text-center">
-                        <a dusk="show-button" href="{{ route('companies.edit', $companies->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                        <a dusk="edit-button" href="{{ route('companies.show', $companies->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                        <a dusk="edit-button" href="{{ route('companies.edit', $companies->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                        <a dusk="show-button" href="{{ route('companies.show', $companies->id)}}" class="btn btn-primary btn-sm">Detail</a>
                         <form action="{{ route('companies.destroy', $companies->id)}}" method="post" style="display: inline-block">
                             @csrf
                             @method('DELETE')

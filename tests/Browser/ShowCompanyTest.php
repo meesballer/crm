@@ -6,7 +6,7 @@ namespace Tests\Browser;
 use App\Company;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
+use Laravel\Dusk\Chrome;
 use Tests\DuskTestCase;
 
 class ShowCompanyTest extends DuskTestCase
@@ -14,7 +14,8 @@ class ShowCompanyTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-    @test
+     * @test
+     * @group company
      */
     public function ShowCompany()
     {
@@ -28,7 +29,9 @@ class ShowCompanyTest extends DuskTestCase
 
         $this->browse(function ($browser) use ($user) {
             $browser->LoginAs(User::find(1))
-                ->visit('/companies/1')
+                ->visit('/companies')
+                ->pause(1000)
+                ->press('Detail')
                 ->pause(1000)
                 ->assertSee('xaris');
         });

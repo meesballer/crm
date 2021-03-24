@@ -57,8 +57,8 @@
                 <td>{{$employees->phone}}</td>
                 <td>{{$employees->company->name}}</td>
                 <td class="text-center">
-                    <a href="{{ route('employees.edit', $employees->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="{{ route('employees.show', $employees->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                    <a dusk="edit-button" href="{{ route('employees.edit', $employees->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                    <a dusk="show-button" href="{{ route('employees.show', $employees->id)}}" class="btn btn-primary btn-sm">Detail</a>
                     <form action="{{ route('employees.destroy', $employees->id)}}" method="post" style="display: inline-block">
                         @csrf
                         @method('DELETE')

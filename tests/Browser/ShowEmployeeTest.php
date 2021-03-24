@@ -14,7 +14,8 @@ class ShowEmployeeTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-    @test
+     * @test
+     * @group employee
      */
     public function show_employee()
     {
@@ -28,7 +29,9 @@ class ShowEmployeeTest extends DuskTestCase
 
         $this->browse(function ($browser) use ($user) {
             $browser->LoginAs(User::find(1))
-                ->visit('/companies/1')
+                ->visit('/employees')
+                ->pause(1000)
+                ->press('Detail')
                 ->pause(1000)
                 ->assertSee('Neistat');
         });

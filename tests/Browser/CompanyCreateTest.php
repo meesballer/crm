@@ -8,12 +8,13 @@ use Laravel\Dusk\Chrome;
 use Tests\DuskTestCase;
 use Faker\Generator as Faker;
 
-class CompanyTest extends DuskTestCase
+class CompanyCreateTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
     /**
-    @test
+     * @test
+     * @group company
      */
     public function VisitIndex()
     {
