@@ -9,13 +9,18 @@ use Tests\DuskTestCase;
 
 class UpdateCompanyTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     /**
      * @test
      * @group company
      */
     public function UpdateCompany()
     {
-        $this->browse(function (Browser $browser) {
+        $user = factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ]);
+
+        $this->browse(function (Browser $browser) use ($user) {
             $browser->LoginAs(User::find(1))
                 ->visit('/companies/1/edit')
                     ->pause(1000)
@@ -28,7 +33,7 @@ class UpdateCompanyTest extends DuskTestCase
                     ->type('website', 'facebook.com')
                     ->pause(1000)
                     ->press('Submit')
-                    ->assertSee('Bedrijf bijgewerkt.');
+                    ->assertSee('Bedrijf bewerkt.');
         });
     }
 }
