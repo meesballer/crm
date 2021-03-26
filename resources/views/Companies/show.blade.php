@@ -48,7 +48,7 @@
                 <td>{{$company->address}}</td>
                 <td>{{$company->website}}</td>
                 <td class="text-center">
-                    <a href="{{ route('companies.edit', $company->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{{ route('companies.edit', $company->id)}}" class="btn btn-primary btn-sm">Bewerken</a>
                     <form action="{{ route('companies.destroy', $company->id)}}" method="post" style="display: inline-block">
                         @csrf
                         @method('DELETE')

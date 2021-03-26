@@ -78,7 +78,7 @@ class CompanyController extends Controller
         Company::create($request->all());
 
         //
-        return back()->with('success', 'Bedrijf toegevoegd.');
+        return view('companies.index')->with('success', 'Bedrijf toegevoegd.');
     }
 
 

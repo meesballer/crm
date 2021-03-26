@@ -72,7 +72,7 @@
         </div>
         <br>
 
-        <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
+        <input type="submit" name="send" value="Toevoegen" class="btn btn-dark btn-block">
     </form>
 </div>
 </body>

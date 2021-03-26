@@ -36,7 +36,7 @@ class CompanyCreateTest extends DuskTestCase
               ->pause(1000)
               ->type('website', 'google.com')
               ->pause(1000)
-              ->press('Submit')
+              ->press('Toevoegen')
               ->assertSee('Bedrijf toegevoegd.');
         });
 

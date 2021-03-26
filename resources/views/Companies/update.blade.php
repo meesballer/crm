@@ -62,7 +62,7 @@
             <input id="user_id" type="hidden" class="form-control" name="user_id" value="{{$userid}}">
         </div>
 
-        <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
+        <input type="submit" name="send" value="Bewerken" class="btn btn-dark btn-block">
     </form>
 </div>
 </body>

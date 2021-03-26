@@ -65,7 +65,7 @@ class EmployeeController extends Controller
         Employee::create($request->all());
 
         //
-        return back()->with('success', 'Medewerker toegevoegd.');
+        return view('employees.index')->with('success', 'Medewerker toegevoegd.');
     }
 
 
