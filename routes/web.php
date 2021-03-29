@@ -44,4 +44,9 @@ Route::post('/employees/create', 'EmployeeController@store');
 Route::post('/employees/update', 'EmployeeController@update');
 Route::post('/employees/{employee}/destroy', 'EmployeeController@destroy');
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+});
 

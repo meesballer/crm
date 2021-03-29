@@ -21,7 +21,6 @@ class CreateEmployeesTable extends Migration
             $table->string('phone');
             $table->unsignedInteger('company_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('role_id');
             $table->timestamps();
         });
     }
