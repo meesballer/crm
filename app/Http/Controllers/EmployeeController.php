@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\User;
 use Illuminate\Http\Request;
-
 use App\Employee;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class EmployeeController extends Controller
 {
-    public function __construct()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('permission:employee-list|employee-create|employee-edit|employee-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:employee-create', ['only' => ['create','store']]);
+        $this->middleware('permission:employee-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:employee-delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
