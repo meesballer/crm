@@ -63,10 +63,6 @@
             @endforeach
         </select>
 
-        <div class="form-group">
-            <input type="hidden" class="form-control" name="role_id" id="role_id" value="2">
-        </div>
-
         <div class="col-md-9">
             <input id="user_id" type="hidden" class="form-control" name="user_id" value={{$userid}}>
         </div>
