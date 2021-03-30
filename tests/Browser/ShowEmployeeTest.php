@@ -14,7 +14,7 @@ class ShowEmployeeTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * @test
+     * @testph
      * @group employee
      */
     public function show_employee()

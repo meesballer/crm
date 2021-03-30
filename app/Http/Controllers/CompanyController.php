@@ -11,11 +11,22 @@ use App\User;
 
 use Illuminate\Support\Facades\Auth;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class CompanyController extends Controller
 {
-
-    public function __construct()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
     {
+        $this->middleware('permission:company-list|company-create|company-edit|company-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:company-create', ['only' => ['create','store']]);
+        $this->middleware('permission:company-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:company-delete', ['only' => ['destroy']]);
         $this->middleware('auth');
     }
     /**
@@ -29,6 +40,11 @@ class CompanyController extends Controller
         return view('companies.index', compact('company'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function add($id)
     {
         $user = Auth::user();
@@ -76,9 +92,9 @@ class CompanyController extends Controller
 
         //  Store data in database
         Company::create($request->all());
-
+        $company = Company::paginate(10);
         //
-        return view('companies.index')->with('success', 'Bedrijf toegevoegd.');
+        return back()->with('success', 'Bedrijf toegevoegd.');
     }
 
 
