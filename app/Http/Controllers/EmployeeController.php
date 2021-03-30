@@ -26,6 +26,17 @@ class EmployeeController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function test()
+    {
+        $employee = Employee::paginate(10);
+        return view('employees.test', compact('employee'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -58,7 +69,6 @@ class EmployeeController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'company_id' => 'required',
             'user_id' => 'required',
-            'role_id' => 'required'
             ]);
 
         //  Store data in database

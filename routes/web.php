@@ -43,6 +43,8 @@ Route::post('/employees/create', 'EmployeeController@store');
 Route::post('/employees/create', 'EmployeeController@store');
 Route::post('/employees/update', 'EmployeeController@update');
 Route::post('/employees/{employee}/destroy', 'EmployeeController@destroy');
+Route::post('/employees/test', 'EmployeeController@test');
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
