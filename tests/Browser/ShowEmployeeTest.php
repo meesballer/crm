@@ -17,7 +17,45 @@ class ShowEmployeeTest extends DuskTestCase
      * @testph
      * @group employee
      */
-    public function show_employee()
+    public function Can_admin_show_employee()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ]);
+
+        $company =  factory(Company::class)->create([
+            'name' => 'xaris',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->LoginAs(User::find(1))
+                ->visit('/employees/1')
+                ->pause(1000)
+                ->assertSee('Neistat');
+        });
+
+    }
+
+    public function Can_Company_show_employee()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ]);
+
+        $company =  factory(Company::class)->create([
+            'name' => 'xaris',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->LoginAs(User::find(1))
+                ->visit('/employees/1')
+                ->pause(1000)
+                ->assertSee('Neistat');
+        });
+
+    }
+
+    public function Can_Employee_show_employee()
     {
         $user = factory(User::class)->create([
             'email' => 'admin@admin.com',

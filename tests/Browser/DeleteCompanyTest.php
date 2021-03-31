@@ -16,7 +16,35 @@ use DatabaseMigrations;
      *
      * @return void
      */
-    public function CanAdminDeleteCompany()
+    public function Can_Admin_Delete_Company()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->LoginAs(User::find(1))
+                ->visit('companies/1')
+                ->press(Delete)
+                ->assertSee('Bedrijf Verwijderd');
+        });
+    }
+
+    public function Can_Employee_Delete_Company()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->LoginAs(User::find(1))
+                ->visit('companies/1')
+                ->press(Delete)
+                ->assertSee('Bedrijf Verwijderd');
+        });
+    }
+
+    public function Can_Company_Delete_Company()
     {
         $user = factory(User::class)->create([
             'email' => 'admin@admin.com',

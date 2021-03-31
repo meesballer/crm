@@ -17,7 +17,7 @@ class ShowCompanyTest extends DuskTestCase
      * @test
      * @group company
      */
-    public function ShowCompany()
+    public function Can_Admin_Show_Company()
     {
         $user = factory(User::class)->create([
             'email' => 'admin@admin.com',
@@ -29,6 +29,44 @@ class ShowCompanyTest extends DuskTestCase
 
         $this->browse(function ($browser) use ($user) {
             $browser->LoginAs(User::find(1))
+                ->visit('/companies/1')
+                ->pause(1000)
+                ->assertSee('xaris');
+        });
+
+    }
+
+    public function Can_Company_Show_Company()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ]);
+
+        $company =  factory(Company::class)->create([
+            'name' => 'xaris',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->LoginAs(User::find(1))
+                ->visit('/companies/1')
+                ->pause(1000)
+                ->assertSee('xaris');
+        });
+
+    }
+
+    public function Can_Employee_Show_Company()
+    {
+        $user = factory(User::class)->create([
+            'email' => 'admin@admin.com',
+        ]);
+
+        $company =  factory(Company::class)->create([
+            'name' => 'xaris',
+        ]);
+
+        $this->browse(function ($browser) use ($user) {
+            $browser->LoginAs(User::find(5))
                 ->visit('/companies/1')
                 ->pause(1000)
                 ->assertSee('xaris');
