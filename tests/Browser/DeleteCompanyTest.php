@@ -37,7 +37,7 @@ use DatabaseMigrations;
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(5))
                 ->visit('companies/1')
                 ->press(Delete)
                 ->assertSee('Bedrijf Verwijderd');
@@ -51,7 +51,7 @@ use DatabaseMigrations;
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(6))
                 ->visit('companies/1')
                 ->press(Delete)
                 ->assertSee('Bedrijf Verwijderd');
