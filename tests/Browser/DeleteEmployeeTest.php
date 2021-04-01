@@ -19,8 +19,10 @@ class DeleteEmployeeTest extends DuskTestCase
         $$this->browse(function (Browser $browser) {
             $browser->LoginAs(User::find(1))
                 ->visit('employees/1')
+                ->pause(1000)
                 ->press(Delete)
-                ->assertSee('Medewerker Verwijderd');
+                ->pause(1000)
+                ->assertSee('Medewerker .');
         });
     }
 

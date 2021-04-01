@@ -7,26 +7,17 @@ use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Chrome;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
 class EmployeeCreateTest extends DuskTestCase
 {
-    use DatabaseMigrations;
-
     /**
      * @test
      * @group employee
      */
     public function Can_Admin_Create_Employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
-
-        $company =  factory(Company::class)->create([
-            'name' => 'xaris',
-        ]);
-
-        $this->browse(function ($browser) use ($company) {
+        $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(5))
                 ->visit('/employees')
                 ->pause(1000)
@@ -44,7 +35,7 @@ class EmployeeCreateTest extends DuskTestCase
                 ->pause(1000)
                 ->screenshot('ingevuld')
                 ->press('Toevoegen')
-                ->assertSee('Medewerker toegevoegd.');
+                ->assertPathIs('/employees');
         });
 
     }
@@ -55,15 +46,8 @@ class EmployeeCreateTest extends DuskTestCase
      */
     public function Can_Employee_Create_Employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
 
-        $company =  factory(Company::class)->create([
-            'name' => 'xaris',
-        ]);
-
-        $this->browse(function ($browser) use ($company) {
+        $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(6))
                 ->visit('/employees')
                 ->pause(1000)
@@ -81,7 +65,7 @@ class EmployeeCreateTest extends DuskTestCase
                 ->pause(1000)
                 ->screenshot('ingevuld')
                 ->press('Toevoegen')
-                ->assertSee('Medewerker toegevoegd.');
+                ->assertPathIs('/employees');
         });
 
     }
@@ -92,15 +76,7 @@ class EmployeeCreateTest extends DuskTestCase
      */
     public function Can_Company_Create_Employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
-
-        $company = factory(Company::class)->create([
-            'name' => 'xaris',
-        ]);
-
-        $this->browse(function ($browser) use ($company) {
+        $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(5))
                 ->visit('/employees')
                 ->pause(1000)
@@ -118,7 +94,7 @@ class EmployeeCreateTest extends DuskTestCase
                 ->pause(1000)
                 ->screenshot('ingevuld')
                 ->press('Toevoegen')
-                ->assertSee('Medewerker toegevoegd.');
+                ->assertPathIs('/employees');
         });
     }
 

@@ -8,68 +8,45 @@ use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Chrome;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
 class ShowEmployeeTest extends DuskTestCase
 {
-    use DatabaseMigrations;
-
     /**
      * @testph
      * @group employee
      */
     public function Can_admin_show_employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
-
-        $company =  factory(Company::class)->create([
-            'name' => 'xaris',
-        ]);
-
-        $this->browse(function ($browser) use ($user) {
+        $this->browse(function (Browser $browser) {
             $browser->LoginAs(User::find(1))
                 ->visit('/employees/1')
                 ->pause(1000)
-                ->assertSee('Neistat');
+                ->assertSee('patron');
         });
 
     }
 
     public function Can_Company_show_employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
 
-        $company =  factory(Company::class)->create([
-            'name' => 'xaris',
-        ]);
-
-        $this->browse(function ($browser) use ($user) {
+        $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(5))
                 ->visit('/employees/1')
                 ->pause(1000)
-                ->assertSee('Neistat');
+                ->assertSee('patron');
         });
 
     }
 
     public function Can_Employee_show_employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
 
-        $company =  factory(Company::class)->create([
-            'name' => 'xaris',
-        ]);
-
-        $this->browse(function ($browser) use ($user) {
+        $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(6))
                 ->visit('/employees/1')
                 ->pause(1000)
-                ->assertSee('Neistat');
+                ->assertSee('patron');
         });
 
     }

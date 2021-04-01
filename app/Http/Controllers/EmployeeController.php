@@ -85,7 +85,7 @@ class EmployeeController extends Controller
         Employee::create($request->all());
 
         //
-        return back()->with('success', 'Medewerker toegevoegd.');
+        return redirect('companies')->with('success', 'Medewerker toegevoegd.');
     }
 
 

@@ -94,7 +94,7 @@ class CompanyController extends Controller
         Company::create($request->all());
         $company = Company::paginate(10);
         //
-        return back()->with('success', 'Bedrijf toegevoegd.');
+        return redirect('companies')->with('success', 'Bedrijf toegevoegd.');
     }
 
 
@@ -106,7 +106,6 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-
         $employees = Employee::where('company_id', '=', $id )->get();
         $company = Company::find($id);
         return view('companies.show', compact('company', 'employees', 'id'));

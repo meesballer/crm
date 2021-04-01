@@ -9,18 +9,15 @@ use Tests\DuskTestCase;
 
 class UpdateEmployeeTest extends DuskTestCase
 {
-    use DatabaseMigrations;
+
     /**
      * @test
      * @group employee
      */
     public function Can_Admin_Update_Employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
 
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function (Browser $browser) {
             $browser->LoginAs(User::find(1))
                 ->visit('/companies/1/edit')
                 ->pause(1000)
@@ -33,40 +30,27 @@ class UpdateEmployeeTest extends DuskTestCase
                 ->type('website', 'facebook.com')
                 ->pause(1000)
                 ->press('Bewerken')
-                ->assertSee('Medewerker bewerkt.');
-        });
+                ->assertPathIs('companies/1/');
+
+    });
+
     }
 
     public function Can_Company_Update_Employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
 
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function (Browser $browser) {
             $browser->LoginAs(User::find(5))
                 ->visit('/companies/1/edit')
                 ->pause(1000)
-                ->type('name', 'facebook')
-                ->pause(1000)
-                ->type('email', 'facebook@facebook.com')
-                ->pause(1000)
-                ->type('address', 'San Francisco')
-                ->pause(1000)
-                ->type('website', 'facebook.com')
-                ->pause(1000)
-                ->press('Bewerken')
-                ->assertSee('Medewerker bewerkt.');
+                ->assertSee('permission');
         });
     }
 
     public function Can_Employee_Update_Employee()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
 
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(6))
                 ->visit('/companies/1/edit')
                 ->pause(1000)
@@ -79,7 +63,7 @@ class UpdateEmployeeTest extends DuskTestCase
                 ->type('website', 'facebook.com')
                 ->pause(1000)
                 ->press('Bewerken')
-                ->assertSee('Medewerker bewerkt.');
+                ->assertPathIs('/companies/1');
         });
     }
 }
