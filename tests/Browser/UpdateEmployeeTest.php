@@ -32,7 +32,7 @@ class UpdateEmployeeTest extends DuskTestCase
                 ->pause(1000)
                 ->type('website', 'facebook.com')
                 ->pause(1000)
-                ->press('Submit')
+                ->press('Bewerken')
                 ->assertSee('Medewerker bewerkt.');
         });
     }
@@ -55,7 +55,7 @@ class UpdateEmployeeTest extends DuskTestCase
                 ->pause(1000)
                 ->type('website', 'facebook.com')
                 ->pause(1000)
-                ->press('Submit')
+                ->press('Bewerken')
                 ->assertSee('Medewerker bewerkt.');
         });
     }
@@ -78,7 +78,7 @@ class UpdateEmployeeTest extends DuskTestCase
                 ->pause(1000)
                 ->type('website', 'facebook.com')
                 ->pause(1000)
-                ->press('Submit')
+                ->press('Bewerken')
                 ->assertSee('Medewerker bewerkt.');
         });
     }

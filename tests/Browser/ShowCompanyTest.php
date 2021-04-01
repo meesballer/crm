@@ -47,7 +47,7 @@ class ShowCompanyTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(5))
                 ->visit('/companies/1')
                 ->pause(1000)
                 ->assertSee('xaris');
@@ -66,7 +66,7 @@ class ShowCompanyTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->LoginAs(User::find(5))
+            $browser->LoginAs(User::find(6))
                 ->visit('/companies/1')
                 ->pause(1000)
                 ->assertSee('xaris');

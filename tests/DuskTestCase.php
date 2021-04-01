@@ -31,8 +31,8 @@ abstract class DuskTestCase extends BaseTestCase
      */
     protected function driver() {
         $options = (new ChromeOptions)->addArguments([
-            //'--disable-gpu',
-            //'--headless'//https://stackoverflow.com/q/49938673/470749
+            '--disable-gpu',
+            '--headless',    //https://stackoverflow.com/q/49938673/470749
             '--window-size=1920,1080',
             'detach=true',
         ]);

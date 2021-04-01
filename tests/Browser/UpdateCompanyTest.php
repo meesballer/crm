@@ -32,7 +32,7 @@ class UpdateCompanyTest extends DuskTestCase
                     ->pause(1000)
                     ->type('website', 'facebook.com')
                     ->pause(1000)
-                    ->press('Submit')
+                    ->press('Bewerken')
                     ->assertSee('Bedrijf bewerkt.');
         });
     }
@@ -44,7 +44,7 @@ class UpdateCompanyTest extends DuskTestCase
         ]);
 
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(5))
                 ->visit('/companies/1/edit')
                 ->pause(1000)
                 ->type('name', 'facebook')
@@ -55,7 +55,7 @@ class UpdateCompanyTest extends DuskTestCase
                 ->pause(1000)
                 ->type('website', 'facebook.com')
                 ->pause(1000)
-                ->press('Submit')
+                ->press('Bewerken')
                 ->assertSee('Bedrijf bewerkt.');
         });
     }
@@ -67,7 +67,7 @@ class UpdateCompanyTest extends DuskTestCase
         ]);
 
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(6))
                 ->visit('/companies/1/edit')
                 ->pause(1000)
                 ->type('name', 'facebook')
@@ -78,7 +78,7 @@ class UpdateCompanyTest extends DuskTestCase
                 ->pause(1000)
                 ->type('website', 'facebook.com')
                 ->pause(1000)
-                ->press('Submit')
+                ->press('Bewerken')
                 ->assertSee('Bedrijf bewerkt.');
         });
     }

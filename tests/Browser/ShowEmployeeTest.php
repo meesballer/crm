@@ -47,7 +47,7 @@ class ShowEmployeeTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(5))
                 ->visit('/employees/1')
                 ->pause(1000)
                 ->assertSee('Neistat');
@@ -66,7 +66,7 @@ class ShowEmployeeTest extends DuskTestCase
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(6))
                 ->visit('/employees/1')
                 ->pause(1000)
                 ->assertSee('Neistat');

@@ -28,7 +28,7 @@ class CompanyCreateTest extends DuskTestCase
      * @test
      * @group companycreate
      */
-    public function Can_Admin_VisitIndex()
+    public function Can_Admin_Create_Company()
     {
 
         $this->app->make(PermissionRegistrar::class)->registerPermissions();
@@ -61,14 +61,14 @@ class CompanyCreateTest extends DuskTestCase
         });
     }
 
-        public function Can_Employee_Visit_Index()
+        public function Can_Employee_Create_Company()
         {
             $user = factory(User::class)->create([
                 'email' => 'employee@employee.com',
             ]);
 
             $this->browse(function ($browser) use ($user) {
-                $browser->LoginAs(User::find(1))
+                $browser->LoginAs(User::find(6))
                     ->visit('/companies')
                     ->pause(1000)
                     ->click('@add-button')
@@ -88,14 +88,14 @@ class CompanyCreateTest extends DuskTestCase
 
         }
 
-    public function Can_Company_Visit_Index()
+    public function Can_Company_Create_Company()
     {
         $user = factory(User::class)->create([
             'email' => 'company@company.com',
         ]);
 
         $this->browse(function ($browser) use ($user) {
-            $browser->LoginAs(User::find(1))
+            $browser->LoginAs(User::find(5))
                 ->visit('/companies')
                 ->pause(1000)
                 ->click('@add-button')
