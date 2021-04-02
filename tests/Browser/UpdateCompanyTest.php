@@ -69,7 +69,7 @@ class UpdateCompanyTest extends DuskTestCase
             $browser->LoginAs(User::find(6))
                 ->visit('/companies/1/edit')
                 ->pause(1000)
-                ->assertSee('permission');
+                ->assertSee('User does not have the right permissions.');
         });
     }
 }

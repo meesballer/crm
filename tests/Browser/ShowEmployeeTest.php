@@ -13,7 +13,7 @@ use Laravel\Dusk\Browser;
 class ShowEmployeeTest extends DuskTestCase
 {
     /**
-     * @testph
+     * @test
      * @group employee
      */
     public function Can_admin_show_employee()
@@ -22,11 +22,15 @@ class ShowEmployeeTest extends DuskTestCase
             $browser->LoginAs(User::find(1))
                 ->visit('/employees/1')
                 ->pause(1000)
-                ->assertSee('patron');
+                ->assertSee('Mees');
         });
 
     }
 
+    /**
+     * @test
+     * @group employee
+     */
     public function Can_Company_show_employee()
     {
 
@@ -34,11 +38,15 @@ class ShowEmployeeTest extends DuskTestCase
             $browser->LoginAs(User::find(5))
                 ->visit('/employees/1')
                 ->pause(1000)
-                ->assertSee('patron');
+                ->assertSee('Mees');
         });
 
     }
 
+    /**
+     * @test
+     * @group employee
+     */
     public function Can_Employee_show_employee()
     {
 

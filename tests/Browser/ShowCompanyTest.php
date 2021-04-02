@@ -22,7 +22,7 @@ class ShowCompanyTest extends DuskTestCase
             $browser->LoginAs(User::find(1))
                 ->visit('/companies/1')
                 ->pause(1000)
-                ->assertSee('google');
+                ->assertPathIs('/companies/1');
         });
 
     }
@@ -38,7 +38,7 @@ class ShowCompanyTest extends DuskTestCase
             $browser->LoginAs(User::find(5))
                 ->visit('/companies/1')
                 ->pause(1000)
-                ->assertSee('google');
+                ->assertPathIs('/companies/1');
         });
 
     }
@@ -54,7 +54,7 @@ class ShowCompanyTest extends DuskTestCase
             $browser->LoginAs(User::find(6))
                 ->visit('/companies/1')
                 ->pause(1000)
-                ->assertSee('permission');
+                ->assertPathIs('/companies/1');
         });
 
     }

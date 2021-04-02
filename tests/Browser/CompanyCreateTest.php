@@ -54,7 +54,7 @@ class CompanyCreateTest extends DuskTestCase
                     ->pause(1000)
                     ->visit('/companies')
                     ->pause(1000)
-                    ->assertSee(403);
+                    ->assertSee('User does not have the right permissions.');
             });
 
 

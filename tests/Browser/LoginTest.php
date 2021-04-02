@@ -16,13 +16,9 @@ class LoginTest extends DuskTestCase
      */
     public function Login()
     {
-        $user = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-        ]);
-
-        $this->browse(function ($browser) use ($user) {
+        $this->browse(function (Browser $browser)  {
             $browser->visit('/login')
-                ->type('email', $user->email)
+                ->type('email', 'admin@admin.com')
                 ->type('password', 'password')
                 ->press('Login')
                 ->assertPathIs('/home');

@@ -35,7 +35,8 @@ class DeleteCompanyTest extends DuskTestCase
             $browser->LoginAs(User::find(6))
                 ->visit('companies/1')
                 ->pause(1000)
-                ->assertSee('403');
+                ->press(Delete)
+                ->assertSee('User does not have the right permissions.');
         });
     }
 

@@ -10,9 +10,8 @@ use Tests\DuskTestCase;
 class DeleteEmployeeTest extends DuskTestCase
 {
     /**
-     * A Dusk test example.
-     *
-     * @return void
+     * @test
+     * @group employee
      */
     public function Can_Admin_Delete_Employee()
     {
@@ -22,10 +21,14 @@ class DeleteEmployeeTest extends DuskTestCase
                 ->pause(1000)
                 ->press(Delete)
                 ->pause(1000)
-                ->assertSee('Medewerker .');
+                ->assertSee('Medewerker.');
         });
     }
 
+    /**
+     * @test
+     * @group employee
+     */
     public function Can_Employee_Delete_Employee()
     {
         $$this->browse(function (Browser $browser) {
@@ -36,6 +39,10 @@ class DeleteEmployeeTest extends DuskTestCase
         });
     }
 
+    /**
+     * @test
+     * @group employee
+     */
     public function Can_Company_Delete_Employee()
     {
         $$this->browse(function (Browser $browser) {
