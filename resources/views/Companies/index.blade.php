@@ -24,11 +24,12 @@
         }
     </style>
     <div class="push-top">
-        @if(session()->get('success'))
+        @if (session('success'))
             <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div><br/>
+                {{ session('success') }}
+            </div>
         @endif
+        <br>
         <div class="heading">
             <H1><BR>Bedrijven</H1>
         </div>

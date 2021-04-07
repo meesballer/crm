@@ -7,6 +7,7 @@
             <div class="pull-left">
                 <h2>Rollen Beheer</h2>
             </div>
+            <br>
             <div class="pull-right">
                 @can('role-create')
                     <a class="btn btn-success" href="{{ route('roles.create') }}"> Creëer nieuwe rol</a>
@@ -14,7 +15,7 @@
             </div>
         </div>
     </div>
-
+<br>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

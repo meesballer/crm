@@ -19,7 +19,7 @@ class EmployeeCreateTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(5))
-                ->visit('/employees')
+                ->visit('/companies/1')
                 ->pause(1000)
                 ->click('@add-button')
                 ->pause(1000)
@@ -49,7 +49,7 @@ class EmployeeCreateTest extends DuskTestCase
 
         $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(6))
-                ->visit('/employees')
+                ->visit('/companies/1')
                 ->pause(1000)
                 ->click('@add-button')
                 ->pause(1000)
@@ -78,7 +78,7 @@ class EmployeeCreateTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(5))
-                ->visit('/employees')
+                ->visit('/companies/1')
                 ->pause(1000)
                 ->click('@add-button')
                 ->pause(1000)

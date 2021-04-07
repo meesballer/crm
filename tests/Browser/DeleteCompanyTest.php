@@ -18,7 +18,7 @@ class DeleteCompanyTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->LoginAs(User::find(1))
                 ->visit('companies/1')
-                ->press(Delete)
+                ->press('Delete')
                 ->assertSee('Bedrijf Verwijderd');
         });
     }
@@ -34,8 +34,8 @@ class DeleteCompanyTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->LoginAs(User::find(6))
                 ->visit('companies/1')
-                ->pause(1000)
-                ->press(Delete)
+                ->pause('1000')
+                ->press('Delete')
                 ->assertSee('User does not have the right permissions.');
         });
     }
@@ -49,7 +49,7 @@ class DeleteCompanyTest extends DuskTestCase
         $this->browse(function (Browser $browser)  {
             $browser->LoginAs(User::find(5))
                 ->visit('companies/1')
-                ->press(Delete)
+                ->press('Delete')
                 ->assertPathIs('/companies');
         });
     }

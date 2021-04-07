@@ -7,12 +7,13 @@
             <div class="pull-left">
                 <h2>Gebruikers beheer.</h2>
             </div>
+            <br>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('users.create') }}"> Creëer nieuwe gebruiker</a>
             </div>
         </div>
     </div>
-
+    <br>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
