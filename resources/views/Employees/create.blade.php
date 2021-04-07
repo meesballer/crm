@@ -56,7 +56,7 @@
         </div>
 
         <label>Bedrijf</label>
-        <select name="company_id" id="company_id" class="form-control">
+        <select name="company_id" id="company_id" class="form-control" required>
             <option value="{{ -1 }}">Selecteer een bedrijf.</option>
             @foreach($companies as $company)
                 <option value="{{$company->id}}">{{$company->name}}</option>

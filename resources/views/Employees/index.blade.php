@@ -1,54 +1,36 @@
-@include('layouts.app')
-    <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<style>
-    .push-top {
-        margin-top: 50px;
-    }
-    .table {
-        width: 75%;
-        max-width: 75%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
-        white-space: nowrap;
-    }
-    .pull-right{
-        margin-left:75%;
-    }
-    .heading{
-        position: absolute;
-        left: 160px;
-        top: 100px;
-    }
-</style>
-<div class="push-top">
-    @if(session()->get('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div><br/>
-    @endif
-    <div class="heading">
-        <H1><BR>Medewerkers</H1>
-    </div>
-        <div class="pull-right">
-            <a dusk="add-button" href="{{ route('employees.create') }}" class="btn btn-primary btn-sm">Medewerker toevoegen</a>
+
+@section('content')
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Medewerkers beheer.</h2>
+            </div>
+            <br>
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('employees.create') }}"> Creëer nieuwe Medewerker</a>
+            </div>
         </div>
-        <br>
+    </div>
+    <br>
 
-    <table class="table">
-        <thead class="thead-dark">
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
+
+    <table class="table table-bordered">
         <tr>
-            <th scope="col">Voornaam</th>
-            <th scope="col">Achternaam</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefoon</th>
-            <th scope="col">Bedrijf</th>
-            <th class="text-center">Actie</th>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>Email</th>
+            <th>Telefoon</th>
+            <th>Bedrijf</th>
+            <th width="280px">Actie</th>
         </tr>
-        </thead>
-        <tbody>
         @foreach($employee as $employees)
             <tr>
                 <td>{{$employees->firstname}}</td>
@@ -56,19 +38,32 @@
                 <td>{{$employees->email}}</td>
                 <td>{{$employees->phone}}</td>
                 <td>{{$employees->company->name}}</td>
+
                 <td class="text-center">
+                    @can('employee-list')
                     <a dusk="edit-button" href="{{ route('employees.edit', $employees->id)}}" class="btn btn-primary btn-sm">Bewerken</a>
+                    @endcan
+                    @can('employee-edit')
                     <a dusk="show-button" href="{{ route('employees.show', $employees->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                    @endcan
+                    @can('employee-delete')
                     <form action="{{ route('employees.destroy', $employees->id)}}" method="post" style="display: inline-block">
+
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                     </form>
+                        @endcan
                 </td>
             </tr>
         @endforeach
-        </tbody>
     </table>
-</div>
-</html>
+
+
+    {!! $employee->render() !!}
+
+
+
+@endsection
+
 
