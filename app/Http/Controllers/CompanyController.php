@@ -27,6 +27,7 @@ class CompanyController extends Controller
         $this->middleware('permission:company-create', ['only' => ['create','store']]);
         $this->middleware('permission:company-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:company-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:company-show', ['only' => ['show']]);
         $this->middleware('auth');
     }
     /**

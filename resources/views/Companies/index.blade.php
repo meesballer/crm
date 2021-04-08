@@ -38,13 +38,19 @@
                 <td>{{$companies->website}}</td>
 
                 <td class="text-center">
+                    @can('company-edit')
                     <a dusk="edit-button" href="{{ route('companies.edit', $companies->id)}}" class="btn btn-primary btn-sm">Bewerken</a>
+                    @endcan
+                    @can('company-show')
                     <a dusk="show-button" href="{{ route('companies.show', $companies->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                    @endcan
+                    @can('company-delete')
                     <form action="{{ route('companies.destroy', $companies->id)}}" method="post" style="display: inline-block">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                     </form>
+                    @endcan
                 </td>
             </tr>
         @endforeach

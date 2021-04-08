@@ -2,24 +2,27 @@
 
 namespace Tests\Browser;
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use RoleSeeder;
-use Illuminate\Database\Seeder;
+
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Chrome;
 use Tests\DuskTestCase;
-use Faker\Generator as Faker;
-use Spatie\Permission\PermissionRegistrar;
 use Laravel\Dusk\Browser;
 
 class CompanyCreateTest extends DuskTestCase
 {
 
+
+    use DatabaseMigrations;
+
+    public function setUp() :void
+    {
+        parent::setUp();
+        $this->artisan('db:seed');
+    }
+
     /**
      * @test
-     * @group company
+     * @group companycreate
      */
     public function Can_Admin_Create_Company()
     {
@@ -40,34 +43,32 @@ class CompanyCreateTest extends DuskTestCase
                 ->press('Toevoegen')
                 ->pause(1000)
                 ->assertPathIs('/companies');
-        });
-    }
+            });
+        }
 
     /**
      * @test
-     * @group company
+     * @group companycreate
      */
         public function Can_Employee_Create_Company()
         {
             $this->browse(function (Browser $browser)  {
-                $browser->LoginAs(User::find(6))
+                $browser->LoginAs(User::find(2))
                     ->pause(1000)
                     ->visit('/companies')
                     ->pause(1000)
                     ->assertSee('User does not have the right permissions.');
             });
-
-
         }
 
     /**
      * @test
-     * @group company
+     * @group companycreate
      */
     public function Can_Company_Create_Company()
     {
         $this->browse(function (Browser $browser) {
-            $browser->LoginAs(User::find(5))
+            $browser->LoginAs(User::find(4))
                 ->visit('/companies')
                 ->pause(1000)
                 ->click('@add-button')
@@ -83,8 +84,6 @@ class CompanyCreateTest extends DuskTestCase
                 ->press('Toevoegen')
                 ->assertPathIs('/companies');
         });
-
-
     }
-    }
+}
 

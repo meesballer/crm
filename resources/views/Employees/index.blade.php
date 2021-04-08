@@ -40,23 +40,23 @@
                 <td>{{$employees->company->name}}</td>
 
                 <td class="text-center">
-                    @can('employee-list')
-                    <a dusk="edit-button" href="{{ route('employees.edit', $employees->id)}}" class="btn btn-primary btn-sm">Bewerken</a>
-                    @endcan
                     @can('employee-edit')
-                    <a dusk="show-button" href="{{ route('employees.show', $employees->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                        <a dusk="edit-button" href="{{ route('employees.edit', $employees->id)}}" class="btn btn-primary btn-sm">Bewerken</a>
+                    @endcan
+                    @can('employee-show')
+                        <a dusk="show-button" href="{{ route('employees.show', $employees->id)}}" class="btn btn-primary btn-sm">Detail</a>
                     @endcan
                     @can('employee-delete')
-                    <form action="{{ route('employees.destroy', $employees->id)}}" method="post" style="display: inline-block">
+                        <form action="{{ route('employees.destroy', $employees->id)}}" method="post" style="display: inline-block">
 
-                        @csrf
-                        @method('DELETE')
+                    @csrf
+                    @method('DELETE')
                         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
-                    </form>
-                        @endcan
+                        </form>
+                    @endcan
                 </td>
             </tr>
-        @endforeach
+                     @endforeach
     </table>
 
 

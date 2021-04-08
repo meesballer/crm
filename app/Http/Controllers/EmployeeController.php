@@ -23,6 +23,7 @@ class EmployeeController extends Controller
         $this->middleware('permission:employee-create', ['only' => ['create','store']]);
         $this->middleware('permission:employee-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:employee-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:employee-show', ['only' => ['show']]);
     }
     /**
      * Display a listing of the resource.
