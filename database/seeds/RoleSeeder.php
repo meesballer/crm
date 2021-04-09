@@ -18,23 +18,23 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('password')
-        ]);
-
-        $user = User::create([
-            'name' => 'employee',
-            'email' => 'employee@employee.com',
-            'password' => bcrypt('employee')
-        ]);
-
-        $user = User::create([
-            'name' => 'company',
-            'email' => 'company@company.com',
-            'password' => bcrypt('company')
-        ]);
+//        $user = User::create([
+//            'name' => 'admin',
+//            'email' => 'admin@admin.com',
+//            'password' => bcrypt('password')
+//        ]);
+//
+//        $user = User::create([
+//            'name' => 'employee',
+//            'email' => 'employee@employee.com',
+//            'password' => bcrypt('employee')
+//        ]);
+//
+//        $user = User::create([
+//            'name' => 'company',
+//            'email' => 'company@company.com',
+//            'password' => bcrypt('company')
+//        ]);
 
     }
 }

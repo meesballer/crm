@@ -30,22 +30,21 @@
             <th>Website</th>
             <th width="280px">Actie</th>
         </tr>
-        @foreach($company as $companies)
             <tr>
-                <td>{{$companies->name}}</td>
-                <td>{{$companies->email}}</td>
-                <td>{{$companies->address}}</td>
-                <td>{{$companies->website}}</td>
+                <td>{{$company->name}}</td>
+                <td>{{$company->email}}</td>
+                <td>{{$company->address}}</td>
+                <td>{{$company->website}}</td>
 
                 <td class="text-center">
                     @can('company-edit')
-                    <a dusk="edit-button" href="{{ route('companies.edit', $companies->id)}}" class="btn btn-primary btn-sm">Bewerken</a>
+                    <a dusk="edit-button" href="{{ route('companies.edit', $company->id)}}" class="btn btn-primary btn-sm">Bewerken</a>
                     @endcan
                     @can('company-show')
-                    <a dusk="show-button" href="{{ route('companies.show', $companies->id)}}" class="btn btn-primary btn-sm">Detail</a>
+                    <a dusk="show-button" href="{{ route('companies.show', $company->id)}}" class="btn btn-primary btn-sm">Detail</a>
                     @endcan
                     @can('company-delete')
-                    <form action="{{ route('companies.destroy', $companies->id)}}" method="post" style="display: inline-block">
+                    <form action="{{ route('companies.destroy', $company->id)}}" method="post" style="display: inline-block">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
@@ -53,7 +52,8 @@
                     @endcan
                 </td>
             </tr>
-        @endforeach
+
+
     </table>
         <table class="table table-bordered">
             <tr>
