@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 
-class SoftDeleteTest extends DuskTestCase
+class SoftDeleteCompanyTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
