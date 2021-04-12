@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('website');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -32,5 +33,6 @@ class CreateCompaniesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('companies');
+
     }
 }
