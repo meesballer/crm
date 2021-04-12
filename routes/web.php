@@ -30,6 +30,9 @@ Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/companies/{company}/add', 'CompanyController@add')->name('companies.add');
+Route::get('/companies/archive', 'CompanyController@archive')->name('companies.archive');
+Route::get('/companies/{company}/delete', 'CompanyController@delete')->name('companies.delete');
+Route::get('/companies/{company}/restore', 'CompanyController@restore')->name('companies.restore');
 Route::post('/companies/{company}/add', 'EmployeeController@store');
 Route::resource('companies', 'CompanyController');
 Route::post('/companies/create', 'CompanyController@store');
@@ -38,6 +41,10 @@ Route::post('/companies/{company}/destroy', 'CompanyController@destroy');
 
 
 
+
+Route::get('/employees/archive', 'EmployeeController@archive')->name('employees.archive');
+Route::get('/employees/{employees}/delete', 'EmployeeController@delete')->name('employees.delete');
+Route::get('/employees/{employees}/restore', 'EmployeeController@restore')->name('employees.restore');
 Route::resource('employees', 'EmployeeController');
 Route::post('/employees/create', 'EmployeeController@store');
 Route::post('/employees/create', 'EmployeeController@store');

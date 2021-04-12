@@ -41,6 +41,18 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function archive()
+    {
+        $employee = Company::onlyTrashed()->paginate(10);
+//        dd($company);
+        return view('employees.archive', compact('employee'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function test()
     {
         $employee = Employee::paginate(10);
@@ -83,12 +95,24 @@ class EmployeeController extends Controller
             ]);
 
         //  Store data in database
-        Employee::create($request->all());
+        $employee = Employee::create($request->all());
 
         //
-        return redirect('employees')->with('success', 'Medewerker toegevoegd.');
+        return redirect()->route('employees.show', $employee->id)->with('success', 'Medewerker toegevoegd.');
     }
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $employee = Employee::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return redirect()->route('employees.show', $employee)->with('success', 'Medewerker teruggezet.');
+    }
 
 
     /**
@@ -149,5 +173,19 @@ class EmployeeController extends Controller
         $employee = Employee::find($id);
         $employee->delete();
         return redirect('employees')->with('success', 'Medewerker verwijderd.');;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        Employee::withTrashed()
+            ->where('id', $id)
+            ->forcedelete();
+        return redirect()->back()->with('success', 'Medewerker verwijderd.');;
     }
 }

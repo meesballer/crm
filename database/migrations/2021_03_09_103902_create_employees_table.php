@@ -22,6 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->unsignedInteger('company_id');
             $table->unsignedInteger('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

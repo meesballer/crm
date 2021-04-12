@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use Illuminate\Http\Request;
-
 use App\Company;
-
 use App\User;
-
 use Illuminate\Support\Facades\Auth;
-
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -39,6 +35,18 @@ class CompanyController extends Controller
     {
         $company = Company::paginate(10);
         return view('companies.index', compact('company'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function archive()
+    {
+        $company = Company::onlyTrashed()->paginate(10);
+//        dd($company);
+        return view('companies.archive', compact('company'));
     }
 
     /**
@@ -92,12 +100,24 @@ class CompanyController extends Controller
         ]);
 
         //  Store data in database
-        Company::create($request->all());
-        $company = Company::paginate(10);
+       $company = Company::create($request->all());
         //
-        return redirect('companies')->with('success', 'Bedrijf toegevoegd.');
+        return redirect()->route('companies.show', $company->id)->with('success', 'Bedrijf toegevoegd.');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $company = Company::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return redirect()->route('companies.show', $company)->with('success', 'Bedrijf teruggezet.');
+    }
 
     /**
      * Display the specified resource.
@@ -107,9 +127,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $employees = Employee::where('company_id', '=', $id )->get();
         $company = Company::find($id);
-        return view('companies.show', compact('company', 'employees', 'id'));
+        return view('companies.show', compact('company'));
     }
 
     /**
@@ -164,5 +183,19 @@ class CompanyController extends Controller
         $company = Company::find($id);
         $company->delete();
         return redirect('companies')->with('success', 'Bedrijf verwijderd.');;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+       Company::withTrashed()
+            ->where('id', $id)
+            ->forcedelete();
+        return redirect()->back()->with('success', 'Bedrijf verwijderd.');;
     }
 }

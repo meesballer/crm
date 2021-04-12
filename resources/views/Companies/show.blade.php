@@ -64,7 +64,7 @@
                 <th>Bedrijf</th>
                 <th width="280px">Actie</th>
             </tr>
-            @foreach($employees as $employee)
+            @foreach($company->employees as $employee)
             <tr>
 
                 <td>{{$employee->firstname}}</td>

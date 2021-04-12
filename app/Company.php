@@ -17,6 +17,7 @@ class Company extends Model
         'user_id',
     ];
 
+
     public function employees()
     {
         return $this->hasMany('App\Employee', 'company_id');
